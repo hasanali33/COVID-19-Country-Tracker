@@ -25,19 +25,6 @@
     <title>COVID-19 Info Page</title>
   </head>
   <body>
-      <img src="" id="rainbow" />
-      <script>
-        console.log('about to fetch a rainbow');
-        fetch('http://covidtracking.com/api/us')
-          .then(response => {
-            console.log(response);
-            return response.JSON();
-        })
-          .then(response=> {
-          console.log(response);
-          document.getElementById('rainbow').src = response;
-        });
-      </script>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <!--
