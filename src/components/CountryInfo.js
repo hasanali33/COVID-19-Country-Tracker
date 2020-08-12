@@ -1,49 +1,53 @@
 import React, { Component } from 'react'
 
-const API = 'http://covidtracking.com/api/us';
 
 class CountryInfo extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      positiveCases: null,
-      hospitalizedcurrently: null,
-      onventilatorcurrently: null,
-      death: null,
-      recovered: null
+      countryData: null
+      //confirmedCases: null,
+      //death: null,
+      //recovered: null
     };
   }
 
   async componentDidMount() {
-      fetch('http://covidtracking.com/api/us')
-        .then(response => response.json())
-        .then(response => {
+    //'https://api.covid19api.com/total/country/$(this.props.country)
+    const url = `https://api.covid19api.com/total/country/${this.props.country}`;
+    const response = await fetch(url);
+    const data = await response.json();
+      //fetch(`https://api.covid19api.com/total/country/${this.props.country}`)
+      //  .then(response => response.json())
+      //  .then(response => {
           // Fix this logic!
-          const countryData = response[0];
-          const positiveCases = countryData['positive'];
-          const hospitalizedcurrently = countryData['hospitalizedCurrently'];
-          const onventilatorcurrently = countryData['onVentilatorCurrently']
-          const death = countryData['death'];
-          const recovered = countryData['recovered'];
+          //const countryData = response[response.length - 1];
+          //const confirmedCases = countryData['Confirmed'];
+          //const death = countryData['Deaths'];
+          //const recovered = countryData['Recovered'];
 
-          this.setState({
-            positiveCases: positiveCases,
-            hospitalizedcurrently: hospitalizedcurrently,
-            onventilatorcurrently: onventilatorcurrently,
-            death: death,
-            recovered: recovered
-          });
-        });
+    console.log(data)
+    this.setState({
+          countryData: data[data.length - 1]
+            //confirmedCases: confirmedCases,
+            //death: death,
+            //recovered: recovered
+    });
   }
 
+
+
   render() {
+
+    if (!this.state.countryData) {
+      return null;
+    }
     return (
       <div>
-        The number of positive cases is {this.state.positiveCases}.
-        The number of negative cases is {this.state.hospitalizedcurrently}.
-        The number of individuals currently on a ventilator {this.state.onventilatorcurrently}.
-        The number of individuals who have died {this.state.death}.
-        The number of individuals who have recovered {this.state.recovered}.
+        <h3> Country Name: {this.state.countryData.Country} </h3>
+          <p> The number of positive cases is {this.state.countryData.Confirmed}. </p>
+          <p> The number of individuals who have died {this.state.countryData.Deaths}. </p>
+          <p> The number of individuals who have recovered {this.state.countryData.Recovered}. </p>
       </div>
     )
   }
