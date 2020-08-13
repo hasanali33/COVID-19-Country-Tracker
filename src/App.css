@@ -3,18 +3,14 @@
 }
 
 body {
-  background-color: lightgrey;
+  background-color: black;
   color: blue;
 }
 .country {
   text-align: center;
 }
 
-.title {
-  color: blue;
-  text-align: center;
-}
-
-.dropdown {
-  text-align: center;
+.dropdown-basic-button {
+  background-color: blue;
+  color: white;
 }
