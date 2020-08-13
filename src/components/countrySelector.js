@@ -32,12 +32,12 @@ class CountrySelector extends Component {
       });
     }
 
-    update() {
+    //update() {
       // user clicks on country,
       // changes the inital country to new country
       // changes the countrydata to new countryData
       // checks if user chose same country, if not change the data
-    }
+    //}
 
     render() {
         return (
@@ -45,7 +45,7 @@ class CountrySelector extends Component {
               <select>
                 {this.state.countries.map((country) => (
                     <option value={country.Slug} key={country.Slug}>{country.Country} </option>
-                    <button onClick={() => sayHello('James')}>Greet</button>
+                    //<button onClick={() => sayHello('James')}>Greet</button>
                 ))}
               </select>
             </div>

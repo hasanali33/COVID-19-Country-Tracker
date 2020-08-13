@@ -13,11 +13,11 @@ class CountryInfo extends Component {
   }
 
 
-  onclick = (e) => {
-    this.setState({
-      countryData: this.state.g
-    })
-  }
+  //onclick = (e) => {
+    //this.setState({
+      //countryData: this.state.g
+    //})
+  //}
 
   async componentDidMount() {
     //'https://api.covid19api.com/total/country/$(this.props.country)
