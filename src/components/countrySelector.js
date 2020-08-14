@@ -6,6 +6,7 @@ class CountrySelector extends Component {
       super(props)
       this.state = {
         countries: []
+
       }
     }
 
@@ -32,17 +33,32 @@ class CountrySelector extends Component {
       });
     }
 
+
+
     //update() {
       // user clicks on country,
       // changes the inital country to new country
       // changes the countrydata to new countryData
       // checks if user chose same country, if not change the data
     //}
+    //onChangeOption(e){
+      // declare the mapofc variable
+        //this.state.selectedCountryOfChoice === e;
+    //}
+
+  //  handleClick (e) {
+  //    this.setState({this.state.selectedCountryOfChoice: e});
+  //    this.handleChange();
+// }
+
+
+
+
 
     render() {
         return (
           <div>
-              <select>
+              <select onChange={event => this.props.updateCountry(event.target.value)}>
                 {this.state.countries.map((country) => (
                     <option value={country.Slug} key={country.Slug}>{country.Country} </option>
                     //<button onClick={() => sayHello('James')}>Greet</button>
